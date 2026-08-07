@@ -5,6 +5,7 @@ app_description = "Used for Frappe practice tasks"
 app_email = "pooja16.shivk@gmail.com"
 app_license = "mit"
 
+
 # Apps
 # ------------------
 
@@ -27,7 +28,7 @@ app_license = "mit"
 # include js, css files in header of desk.html
 # app_include_css = "/assets/practice_app/css/practice_app.css"
 # app_include_js = "/assets/practice_app/js/practice_app.js"
-
+app_include_js = "custom_desk.bundle.js"
 # include js, css files in header of web template
 # web_include_css = "/assets/practice_app/css/practice_app.css"
 # web_include_js = "/assets/practice_app/js/practice_app.js"
@@ -114,7 +115,7 @@ app_license = "mit"
 # ------------------
 # To hook into the build process
 
-# after_build = "practice_app.build.after_build"
+#after_build = "practice_app.build.after_build"
 
 # Desk Notifications
 # ------------------
