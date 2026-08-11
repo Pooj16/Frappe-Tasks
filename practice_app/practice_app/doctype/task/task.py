@@ -6,7 +6,6 @@ from frappe.model.document import Document
 
 class Task(Document):
 	pass
-
 @frappe.whitelist()
 def create_task(task_subject):
 	task=frappe.new_doc("Task")

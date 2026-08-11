@@ -356,21 +356,410 @@
 //     }
 
 // });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         $(frm.fields_dict.control_demo.wrapper).empty();
+
+//         let leaves_control = frappe.ui.form.make_control({
+//             parent: frm.fields_dict.control_demo.wrapper,
+//             df: {
+//                 label: "No of Leaves",
+//                 fieldname: "no_of_leaves",
+//                 fieldtype: "Int"
+//             },
+//             render_input: true
+//         });
+//         leaves_control.set_value(10);
+//         console.log(leaves_control.get_value());
+//     }
+// });
+// dialog API 
+
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Employee Message", function () {
+
+//             frappe.msgprint(
+//                 "Employee Record",
+//                 "Welcome to Employee Record!"
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Employee Details", function () {
+
+//             frappe.msgprint(
+//                 "Employee Details",
+//                 `
+//                 <b>Employee ID:</b> ${frm.doc.employee_id}<br>
+//                 <b>Employee Name:</b> ${frm.doc.employee_name}<br>
+//                 <b>Department:</b> ${frm.doc.department}<br>
+//                 <b>Salary:</b> ${frm.doc.salary}
+//                 `
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Employee Status", function () {
+
+//             frappe.msgprint({
+//                 title: "Employee",
+//                 indicator: "green",
+//                 message: "Employee Record Loaded Successfully"
+//             });
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Create Employee", function () {
+
+//             frappe.msgprint({
+//                 title: "Employee Record",
+//                 message: "Create a new Employee Record?",
+
+//                 primary_action: {
+
+//                     label: "Create",
+
+//                     action() {
+
+//                         frappe.new_doc("Employee Record");
+
+//                     }
+
+//                 }
+
+//             });
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Throw Error", function () {
+
+//             frappe.throw("Employee Record cannot be processed!");
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Employee Dialog", function () {
+
+//             let d = new frappe.ui.Dialog({
+
+//                 title: "Employee Details",
+
+//                 fields: [
+//                     {
+//                         label: "Employee Name",
+//                         fieldname: "employee_name",
+//                         fieldtype: "Data",
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Department",
+//                         fieldname: "department",
+//                         fieldtype: "Data",
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Salary",
+//                         fieldname: "salary",
+//                         fieldtype: "Currency",
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Bonus",
+//                         fieldname: "bonus",
+//                         fieldtype: "Currency"
+//                     }
+//                 ],
+
+//                 size: "small",
+
+//                 primary_action_label: "Submit",
+
+//                 primary_action(values) {
+
+//                     console.log(values);
+
+//                     frappe.msgprint(`
+//                         <b>Employee Name:</b> ${values.employee_name}<br>
+//                         <b>Department:</b> ${values.department}<br>
+//                         <b>Salary:</b> ${values.salary}<br>
+//                         <b>Bonus:</b> ${values.bonus}
+//                     `);
+
+//                     d.hide();
+//                 }
+
+//             });
+
+//             d.show();
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Employee Prompt", function () {
+
+//             frappe.prompt(
+//                 "Employee Name",
+
+//                 ({ value }) => {
+
+//                     console.log(value);
+
+//                     frappe.msgprint({
+//                         title: "Employee Details",
+//                         message: "Employee Name : " + value,
+//                         indicator: "green"
+//                     });
+
+//                 }
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Delete Employee", function () {
+
+//             frappe.confirm(
+//                 `Are you sure you want to delete <b>${frm.doc.employee_name}</b>?`,
+
+//                 () => {
+
+//                     frappe.msgprint({
+//                         title: "Success",
+//                         message: `${frm.doc.employee_name} deleted successfully.`,
+//                         indicator: "green"
+//                     });
+
+//                 },
+
+//                 () => {
+
+//                     frappe.msgprint({
+//                         title: "Cancelled",
+//                         message: "No changes were made.",
+//                         indicator: "blue"
+//                     });
+
+//                 }
+
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Terminate Employee", function () {
+
+//             frappe.warn(
+
+//                 "Terminate Employee",
+
+//                 `You are about to terminate <b>${frm.doc.employee_name}</b>.<br><br>
+//                 This action cannot be undone.`,
+
+//                 () => {
+
+//                     frappe.msgprint({
+//                         title: "Success",
+//                         message: `${frm.doc.employee_name} terminated successfully.`,
+//                         indicator: "red"
+//                     });
+
+//                 },
+
+//                 "Proceed",
+
+//                 false
+
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Show Alert", function () {
+
+//             frappe.show_alert(
+//                 "Employee saved successfully!",
+//                 5
+//             );
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Start Import", function () {
+
+//             let progress = 0;
+
+//             let timer = setInterval(() => {
+
+//                 progress += 20;
+
+//                 frappe.show_progress(
+//                     "Import Employees",
+//                     progress,
+//                     100,
+//                     `Imported ${progress}%`
+//                 );
+
+//                 if (progress >= 100) {
+
+//                     clearInterval(timer);
+
+//                     frappe.show_alert({
+//                         message: "Import Completed",
+//                         indicator: "green"
+//                     }, 3);
+
+//                 }
+
+//             }, 1000);
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+
+//         frm.add_custom_button("Create HR Employee", function () {
+
+//             frappe.new_doc("Employee Record", {
+//                 employee_name: "Pooja",
+//                 department: "HR"
+//             });
+
+//         });
+
+//     }
+// });
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
+//         frm.add_custom_button("Select Employees", () => {
+
+//             new frappe.ui.form.MultiSelectDialog({
+//                 doctype: "Employee Record",
+//                 target: frm,
+
+//                 setters: {
+//                     department: frm.doc.department
+//                 },
+
+//                 action(selections) {
+//                     console.log(selections);
+
+//                     frappe.msgprint(
+//                         "Selected Employees:<br><br>" +
+//                         selections.join("<br>")
+//                     );
+//                 }
+//             });
+
+//         });
+//     }
+// });
 frappe.ui.form.on("Employee Record", {
     refresh(frm) {
 
-        $(frm.fields_dict.control_demo.wrapper).empty();
+        frm.add_custom_button("Add Employees", () => {
 
-        let leaves_control = frappe.ui.form.make_control({
-            parent: frm.fields_dict.control_demo.wrapper,
-            df: {
-                label: "No of Leaves",
-                fieldname: "no_of_leaves",
-                fieldtype: "Int"
-            },
-            render_input: true
+            const dialog = new frappe.ui.Dialog({
+
+                title: "Employee Details",
+
+                fields: [
+                    {
+                        fieldname: "employees",
+                        fieldtype: "Table",
+                        label: "Employees",
+                        in_place_edit: true,
+
+                        fields: [
+                            {
+                                fieldname: "employee_name",
+                                label: "Employee Name",
+                                fieldtype: "Data",
+                                in_list_view: 1,
+                                reqd: 1
+                            },
+                            {
+                                fieldname: "department",
+                                label: "Department",
+                                fieldtype: "Data",
+                                in_list_view: 1
+                            },
+                            {
+                                fieldname: "salary",
+                                label: "Salary",
+                                fieldtype: "Currency",
+                                in_list_view: 1
+                            }
+                        ]
+                    }
+                ],
+
+                primary_action_label: "Submit",
+
+                primary_action(values) {
+
+                    console.log(values);
+
+                    frappe.msgprint(
+                        JSON.stringify(values, null, 2)
+                    );
+
+                    dialog.hide();
+                }
+
+            });
+
+            dialog.show();
+
         });
-        leaves_control.set_value(10);
-        console.log(leaves_control.get_value());
+
     }
 });
