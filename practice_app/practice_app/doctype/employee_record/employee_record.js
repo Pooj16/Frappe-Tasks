@@ -356,6 +356,9 @@
 //     }
 
 // });
+
+// control api
+
 // frappe.ui.form.on("Employee Record", {
 //     refresh(frm) {
 
@@ -368,10 +371,32 @@
 //                 fieldname: "no_of_leaves",
 //                 fieldtype: "Int"
 //             },
+
 //             render_input: true
 //         });
 //         leaves_control.set_value(10);
 //         console.log(leaves_control.get_value());
+//     }
+// });
+
+// frappe.ui.form.on("Employee Record", {
+//     setup(frm) {
+//         frappe.meta.docfield_map["Employee Record"].department.formatter = (value) => {
+//             if (value === "IT") {
+//                 return "💻 IT Department";
+//             }
+
+//             if (value === "HR") {
+//                 return "👥 HR Department";
+//             }
+
+//             return value || "";
+//         };
+//     },
+
+//     refresh(frm) {
+//         frm.set_df_property("department", "read_only", 1);
+//         frm.refresh_field("department");
 //     }
 // });
 // dialog API 
@@ -702,64 +727,66 @@
 //         });
 //     }
 // });
-frappe.ui.form.on("Employee Record", {
-    refresh(frm) {
+// frappe.ui.form.on("Employee Record", {
+//     refresh(frm) {
 
-        frm.add_custom_button("Add Employees", () => {
+//         frm.add_custom_button("Add Employees", () => {
 
-            const dialog = new frappe.ui.Dialog({
+//             const dialog = new frappe.ui.Dialog({
 
-                title: "Employee Details",
+//                 title: "Employee Details",
 
-                fields: [
-                    {
-                        fieldname: "employees",
-                        fieldtype: "Table",
-                        label: "Employees",
-                        in_place_edit: true,
+//                 fields: [
+//                     {
+//                         fieldname: "employees",
+//                         fieldtype: "Table",
+//                         label: "Employees",
+//                         in_place_edit: true,
 
-                        fields: [
-                            {
-                                fieldname: "employee_name",
-                                label: "Employee Name",
-                                fieldtype: "Data",
-                                in_list_view: 1,
-                                reqd: 1
-                            },
-                            {
-                                fieldname: "department",
-                                label: "Department",
-                                fieldtype: "Data",
-                                in_list_view: 1
-                            },
-                            {
-                                fieldname: "salary",
-                                label: "Salary",
-                                fieldtype: "Currency",
-                                in_list_view: 1
-                            }
-                        ]
-                    }
-                ],
+//                         fields: [
+//                             {
+//                                 fieldname: "employee_name",
+//                                 label: "Employee Name",
+//                                 fieldtype: "Data",
+//                                 in_list_view: 1,
+//                                 reqd: 1
+//                             },
+//                             {
+//                                 fieldname: "department",
+//                                 label: "Department",
+//                                 fieldtype: "Data",
+//                                 in_list_view: 1
+//                             },
+//                             {
+//                                 fieldname: "salary",
+//                                 label: "Salary",
+//                                 fieldtype: "Currency",
+//                                 in_list_view: 1
+//                             }
+//                         ]
+//                     }
+//                 ],
 
-                primary_action_label: "Submit",
+//                 primary_action_label: "Submit",
 
-                primary_action(values) {
+//                 primary_action(values) {
 
-                    console.log(values);
+//                     console.log(values);
 
-                    frappe.msgprint(
-                        JSON.stringify(values, null, 2)
-                    );
+//                     frappe.msgprint(
+//                         JSON.stringify(values, null, 2)
+//                     );
 
-                    dialog.hide();
-                }
+//                     dialog.hide();
+//                 }
 
-            });
+//             });
 
-            dialog.show();
+//             dialog.show();
 
-        });
+//         });
 
-    }
-});
+//     }
+// });
+
+

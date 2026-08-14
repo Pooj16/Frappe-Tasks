@@ -1,0 +1,161 @@
+<h1>Jinja API Testing</h1>
+
+<hr>
+
+<h2>1. frappe.format</h2>
+<p>
+    {{ frappe.format('2026-08-12', {'fieldtype': 'Date'}) }}
+</p>
+
+
+<h2>2. frappe.format_date</h2>
+<p>
+    {{ frappe.format_date('2026-08-12') }}
+</p>
+
+
+<h2>3. frappe.get_url</h2>
+<p>
+    {{ frappe.get_url() }}
+</p>
+
+
+<h2>4. frappe.get_doc</h2>
+
+{% set employee = frappe.get_doc('Employee Record', 'fdc2ncqvn0') %}
+
+<p>
+    Employee Name: {{ employee.employee_name }}
+</p>
+
+<p>
+    Employee ID: {{ employee.employee_id }}
+</p>
+
+
+<h2>5. frappe.get_all</h2>
+
+{% set employees = frappe.get_all(
+    'Employee Record',
+    fields=['employee_name', 'employee_id', 'salary']
+) %}
+
+{% for emp in employees %}
+    <p>
+        {{ emp.employee_name }} -
+        {{ emp.employee_id }} -
+        {{ emp.salary }}
+    </p>
+{% endfor %}
+
+
+<h2>6. frappe.get_list</h2>
+
+{% set employees = frappe.get_list(
+    'Employee Record',
+    fields=['employee_name', 'employee_id']
+) %}
+
+{% for emp in employees %}
+    <p>
+        {{ emp.employee_name }} - {{ emp.employee_id }}
+    </p>
+{% endfor %}
+
+
+<h2>7. frappe.db.get_value</h2>
+
+{% set salary = frappe.db.get_value(
+    'Employee Record',
+    'fdc2ncqvn0',
+    'salary'
+) %}
+
+<p>
+    Salary: {{ salary }}
+</p>
+
+
+<h2>8. frappe.db.get_single_value</h2>
+
+{% set timezone = frappe.db.get_single_value(
+    'System Settings',
+    'time_zone'
+) %}
+
+<p>
+    Time Zone: {{ timezone }}
+</p>
+
+
+<h2>9. frappe.get_system_settings</h2>
+
+<p>
+    Country: {{ frappe.get_system_settings('country') }}
+</p>
+
+
+<h2>10. frappe.get_meta</h2>
+
+{% set meta = frappe.get_meta('Employee Record') %}
+
+<p>
+    Number of fields: {{ meta.fields | len }}
+</p>
+
+{% if meta.get_field('salary') %}
+    <p>Salary field exists.</p>
+{% endif %}
+
+
+<h2>11. frappe.get_fullname</h2>
+
+<p>
+    Current User:
+    {{ frappe.get_fullname() }}
+</p>
+
+
+<h2>12. frappe.render_template</h2>
+
+<p>
+    {{ frappe.render_template(
+        '{{ message }}',
+        {'message': 'Hello from render_template!'}
+    ) }}
+</p>
+
+
+<h2>13. frappe._</h2>
+
+<p>
+    {{ _('Hello World') }}
+</p>
+
+
+<h2>14. frappe.session.user</h2>
+
+<p>
+    Logged in user: {{ frappe.session.user }}
+</p>
+
+
+<h2>15. frappe.session.csrf_token</h2>
+
+<p>
+    CSRF Token: {{ frappe.session.csrf_token }}
+</p>
+
+
+<h2>16. frappe.form_dict</h2>
+
+<p>
+    Form data: {{ frappe.form_dict }}
+</p>
+
+
+<h2>17. frappe.lang</h2>
+
+<p>
+    Current language: {{ frappe.lang }}
+</p>

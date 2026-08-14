@@ -12,38 +12,45 @@
   "salary",
   "bonus",
   "amended_from",
-  "control_demo"
+  "control_demo",
+  "data"
  ],
  "fields": [
   {
    "fieldname": "employee_id",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Employee ID"
   },
   {
    "fieldname": "employee_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Employee Name"
   },
   {
    "fieldname": "department",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Department",
    "options": "HR\nIT\nFINANCE\nSALES"
   },
   {
    "fieldname": "salary",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Salary"
   },
   {
    "fieldname": "bonus",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "bonus"
   },
   {
    "fieldname": "amended_from",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Amended From",
    "no_copy": 1,
    "options": "Employee Record",
@@ -55,12 +62,17 @@
    "fieldname": "control_demo",
    "fieldtype": "HTML",
    "label": "Control Demo"
+  },
+  {
+   "fieldname": "data",
+   "fieldtype": "Code",
+   "label": "data"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-03 18:56:05.315754",
+ "modified": "2026-08-13 15:00:00.700976",
  "modified_by": "Administrator",
  "module": "practice_app",
  "name": "Employee Record",

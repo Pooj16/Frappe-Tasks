@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2026-08-13 15:53:49.814045",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-08-13 15:53:49.814045",
+ "modified_by": "Administrator",
+ "module": "practice_app",
+ "name": "employee-dashboard",
+ "owner": "Administrator",
+ "page_name": "employee-dashboard",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Employee Dashboard"
+}
